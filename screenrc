@@ -1,0 +1,52 @@
+# Green text, time, and date; windows in blue:
+hardstatus alwayslastline "%{=b}%{G} : %{b}%w"
+
+# Turn off start message:
+startup_message off
+
+# Set messages timeout to one second: 
+msgwait 1
+
+# bind F7  to detach screen session from this terminal
+# bind F8  to kill current screen window.
+# bind F9  to create a new screen
+# bind F10 to rename current screen window
+# bind F11 to move to previous window
+# bind F12 to move to next window
+bindkey -k k7 detach
+bindkey -k k8 kill
+bindkey -k k9 screen
+bindkey -k k; title
+bindkey -k F1 prev
+bindkey -k F2 next
+
+# Increase the copy buffer to an insane number
+defscrollback 100000
+
+# Message for activity
+activity "activity: window ~%"
+
+# Visual bell
+vbell_msg "bell: window ~%"
+
+# Refresh whole screen on window resize
+allpartial off
+
+# Cleanly detach when I kill off CygPutty
+autodetach on
+
+# Give the term a nice title
+shelltitle $HOST
+
+# Make the shells think they're login shells
+shell -$SHELL
+
+# connect windows to the display so programs like mplayer can find it when
+# we're inside a screen in a terminal application in a graphical environment
+setenv DISPLAY ':0'
+
+# print wackier status messages
+nethack on
+
+# restore window contents after using (e.g.) vi
+altscreen on
